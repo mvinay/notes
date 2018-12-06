@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rm cscope.* tags
+find . -regex '.*\.\(cpp\|h\|c\|hpp\|td\|inc\|def\|cc\)' > cscope.files
+cscope -b -q -k
+ctags -L cscope.files
+
+cscope -dC
