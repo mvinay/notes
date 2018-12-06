@@ -1,0 +1,4 @@
+* git reset local branch to remote
+
+  git fetch origin
+  git reset --hard origin/master
