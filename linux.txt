@@ -5,4 +5,12 @@
   
   * to install
 
-sudo apt-get install htop vim cscope ctags tmux byobu apparix g++ cmake git clang-format zsh  
+sudo apt-get install htop vim cscope ctags tmux byobu apparix g++ cmake git clang-format zsh curl
+
+* default shell to zsh in byobu
+
+echo set -g default-shell /usr/bin/zsh >> ~/.byobu/.tmux.conf
+echo set -g default-command /usr/bin/zsh >> ~/.byobu/.tmux.conf
+
+* oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
