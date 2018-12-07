@@ -5,7 +5,7 @@
   
   * to install
 
-sudo apt-get install htop vim cscope ctags tmux byobu apparix g++ cmake git clang-format zsh curl
+sudo apt-get install htop vim cscope ctags tmux byobu apparix g++ cmake git clang-format zsh curl ninja-build
 
 * default shell to zsh in byobu
 
