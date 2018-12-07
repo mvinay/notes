@@ -1,0 +1,2 @@
+* debug build
+cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="X86" -DBUILD_SHARED_LIBS=1 -DCMAKE_CXX_FLAGS=" -gdwarf-4 " ../llvm
