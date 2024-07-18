@@ -3,7 +3,16 @@ To store my dev env setup, code snippets, scripts etc.
 
 # TOSA to Affine conversion in lastest MLIR(July 2024)
 
-TOSA 1D Add example (tosa_add.mlir)
+MLIR build instructions:
+```
+git clone --depth 1 https://github.com/llvm/llvm-project.git
+cd llvm-project
+mkdir -p build
+cd build
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE="Debug" -DLLVM_ENABLE_ASSERTIONS=ON -DLLVM_TARGETS_TO_BUILD="Native" ../llvm -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLLVM_USE_LINKER=lld -DLLVM_ENABLE_PROJECTS="mlir" -DLLVM_CCACHE_BUILD=ON
+```
+
+TOSA 1D Add example (tosa_add.mlir):
 
 ```
 // CHECK-LABEL: broadcast1
@@ -13,16 +22,17 @@ func.func @example(%arg0: tensor<128xf32>, %arg1: tensor<128xf32>) -> tensor<128
 }
 ``` 
 
-MLIR pass pipeline
+MLIR pass pipeline:
 
 ```
-mlir-opt -pass-pipeline="builtin.module(func.func(tosa-to-linalg),
+
+<llvm-project>/build/bin/mlir-opt -pass-pipeline="builtin.module(func.func(tosa-to-linalg),
                          one-shot-bufferize{bufferize-function-boundaries function-boundary-type-conversion=identity-layout-map},
                          func.func(finalizing-bufferize),
                          convert-linalg-to-affine-loops)" tosa_add.mlir -o out.mlir
 ```
 
-Output for the example (out.mlir)
+Output for the example (out.mlir):
 
 ```
 module {
