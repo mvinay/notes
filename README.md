@@ -15,7 +15,6 @@ cmake -G "Ninja" -DCMAKE_BUILD_TYPE="Debug" -DLLVM_ENABLE_ASSERTIONS=ON -DLLVM_T
 TOSA 1D Add example (tosa_add.mlir):
 
 ```
-// CHECK-LABEL: broadcast1
 func.func @example(%arg0: tensor<128xf32>, %arg1: tensor<128xf32>) -> tensor<128xf32> {
   %0 = tosa.add %arg0, %arg1 : (tensor<128xf32>, tensor<128xf32>) -> tensor<128xf32>
   return %0 : tensor<128xf32>
