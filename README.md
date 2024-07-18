@@ -13,7 +13,7 @@ func.func @example(%arg0: tensor<128xf32>, %arg1: tensor<128xf32>) -> tensor<128
 }
 ``` 
 
-mlir command line
+MLIR pass pipeline
 
 ```
 mlir-opt -pass-pipeline="builtin.module(func.func(tosa-to-linalg),
